@@ -7,6 +7,7 @@ export const initialState: AppState = {
     schedule: { groups: [] } as any,
     sessions: [],
     speakers: [],
+    patients: [],
     favorites: [],
     locations: [],
     allTracks: [],

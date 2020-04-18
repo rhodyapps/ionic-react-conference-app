@@ -16,5 +16,6 @@ export interface Session {
   location: string;
   description: string;
   speakerNames: string[];
+  patientNames: string[];
   tracks: string[];
 }

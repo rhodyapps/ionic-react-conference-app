@@ -6,8 +6,7 @@ const getSchedule = (state: AppState) => {
 
   return state.data.schedule
 };
-export const getSpeakers = (state: AppState) => state.data.speakers;
-export const getPatients = (state: AppState) => state.data.speakers;
+export const getPatients = (state: AppState) => state.data.patients;
 const getSessions = (state: AppState) => state.data.sessions;
 const getFilteredTracks = (state: AppState) => state.data.filteredTracks;
 const getFavoriteIds = (state: AppState) => state.data.favorites;
@@ -104,30 +103,6 @@ export const getSession = createSelector(
     return sessions.find(s => s.id === id);
   }
 );
-
-export const getSpeaker = createSelector(
-  getSpeakers, getIdParam,
-  (speakers, id) => speakers.find(x => x.id === id)
-);
-
-export const getSpeakerSessions = createSelector(
-  getSessions,
-  (sessions) => {
-    const speakerSessions: { [key: string]: Session[] } = {};
-
-    sessions.forEach(session => {
-      session.speakerNames && session.speakerNames.forEach(name => {
-        if (speakerSessions[name]) {
-          speakerSessions[name].push(session);
-        } else {
-          speakerSessions[name] = [session];
-        }
-      })
-    });
-    return speakerSessions;
-  }
-);
-
 
 export const getPatient = createSelector(
   getPatients, getIdParam,
